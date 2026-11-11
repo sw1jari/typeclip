@@ -18,8 +18,13 @@ if [ -z "$text" ]; then
     exit 1
 fi
 
-dunstify "typeclip" "Typing ${#text} characters in ${DELAY}s, click the field" 2>/dev/null
-sleep "$DELAY"
+# one notification that updates every second, then closes when typing starts
+ID=9341
+for ((i = DELAY; i > 0; i--)); do
+    dunstify -r "$ID" -t 1500 "typeclip" "Typing ${#text} characters in ${i}s, click the field" 2>/dev/null
+    sleep 1
+done
+dunstify -C "$ID" 2>/dev/null
 
 # xdotool drops newlines from piped text, so press Return between the lines
 first=1
