@@ -2,9 +2,15 @@
 
 Types your clipboard out as keystrokes after a few seconds. For pages with a broken paste, like teams.cloud.microsoft.
 
+The demo page below blocks pasting on purpose.
+
+**From dmenu**
+
 ![paste fails, then typeclip types the clipboard](docs/typeclip.gif)
 
-The demo page blocks pasting on purpose.
+**From a terminal**
+
+![the same from a terminal next to Firefox](docs/typeclip-terminal.gif)
 
 ## Install
 
