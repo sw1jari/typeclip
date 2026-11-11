@@ -14,5 +14,10 @@ fi
 dunstify "typeclip" "Typing ${#text} characters in ${DELAY}s, click the field" 2>/dev/null
 sleep "$DELAY"
 
-# newlines become Return, so multi-line text lands as it was copied
-printf '%s' "$text" | xdotool type --clearmodifiers --delay 12 --file -
+# xdotool drops newlines from piped text, so press Return between the lines
+first=1
+while IFS= read -r line || [ -n "$line" ]; do
+    [ "$first" = 0 ] && xdotool key --clearmodifiers Return
+    first=0
+    [ -n "$line" ] && xdotool type --clearmodifiers --delay 12 -- "$line"
+done <<< "$text"

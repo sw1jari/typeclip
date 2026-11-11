@@ -2,6 +2,10 @@
 
 Types your clipboard out as keystrokes after a few seconds. For pages with a broken paste, like teams.cloud.microsoft.
 
+![paste fails, then typeclip types the clipboard](docs/typeclip.gif)
+
+The demo page blocks pasting on purpose.
+
 ## Install
 
 Needs bash, xclip, xdotool and dmenu on X11. Notifications go through `dunstify` when it's there.
@@ -19,7 +23,7 @@ typeclip      # wait 3 seconds
 typeclip 5    # wait 5 seconds
 ```
 
-Set `TYPECLIP_DELAY` to change the default. Newlines are typed as Return, so a multi-line text lands the way it was copied, which can submit a chat message early. In Teams, use Shift+Enter yourself if that matters.
+Set `TYPECLIP_DELAY` to change the default. Newlines are typed as Return, so a multi-line text lands the way it was copied, which can send a chat message early.
 
 ## Notes
 
