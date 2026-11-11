@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
-# types the clipboard out as keystrokes after a short delay, for pages that
-# break pasting. Run it from dmenu, then click into the field before it fires.
-# usage: typeclip [seconds]   (default 3, or $TYPECLIP_DELAY)
+# types text out as keystrokes after a short delay, for pages that break
+# pasting. Without text it types the clipboard. Run it from dmenu or a terminal,
+# then click into the field before it fires.
+# usage: typeclip [-d seconds] [text]   (delay defaults to 3 or $TYPECLIP_DELAY)
 
-DELAY="${1:-${TYPECLIP_DELAY:-3}}"
+DELAY="${TYPECLIP_DELAY:-3}"
+if [ "$1" = "-d" ]; then DELAY="$2"; shift 2; fi
 
-text="$(xclip -selection clipboard -o 2>/dev/null)"
+if [ $# -gt 0 ]; then
+    text="$*"
+else
+    text="$(xclip -selection clipboard -o 2>/dev/null)"
+fi
 if [ -z "$text" ]; then
-    dunstify "typeclip" "Clipboard is empty" 2>/dev/null
+    dunstify "typeclip" "Nothing to type, the clipboard is empty" 2>/dev/null
+    echo "typeclip: nothing to type" >&2
     exit 1
 fi
 

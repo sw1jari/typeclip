@@ -16,11 +16,12 @@ cp typeclip ~/.local/bin/
 
 ## Usage
 
-Copy the text, run `typeclip` from dmenu, then click into the field. It types after 3 seconds.
+Copy the text, run `typeclip` from dmenu or a terminal, then click into the field. It types after 3 seconds.
 
 ```sh
-typeclip      # wait 3 seconds
-typeclip 5    # wait 5 seconds
+typeclip                  # type the clipboard
+typeclip -d 5             # wait 5 seconds first
+typeclip "some text"      # type this instead of the clipboard
 ```
 
 Set `TYPECLIP_DELAY` to change the default. Newlines are typed as Return, so a multi-line text lands the way it was copied, which can send a chat message early.
