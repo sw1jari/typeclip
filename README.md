@@ -4,7 +4,7 @@ Types your clipboard out as keystrokes after a few seconds. For pages with a bro
 
 ## Install
 
-Needs bash, xclip, xdotool and dmenu on X11. Notifications go through `notify-send` when it's there.
+Needs bash, xclip, xdotool and dmenu on X11. Notifications go through `dunstify` when it's there.
 
 ```sh
 cp typeclip ~/.local/bin/

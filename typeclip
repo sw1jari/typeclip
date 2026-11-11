@@ -7,11 +7,11 @@ DELAY="${1:-${TYPECLIP_DELAY:-3}}"
 
 text="$(xclip -selection clipboard -o 2>/dev/null)"
 if [ -z "$text" ]; then
-    notify-send "typeclip" "Clipboard is empty" 2>/dev/null
+    dunstify "typeclip" "Clipboard is empty" 2>/dev/null
     exit 1
 fi
 
-notify-send "typeclip" "Typing ${#text} characters in ${DELAY}s, click the field" 2>/dev/null
+dunstify "typeclip" "Typing ${#text} characters in ${DELAY}s, click the field" 2>/dev/null
 sleep "$DELAY"
 
 # newlines become Return, so multi-line text lands as it was copied
